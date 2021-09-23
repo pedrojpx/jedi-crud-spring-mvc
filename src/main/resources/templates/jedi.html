@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Jedis</title>
+    <title>Jedi Forces</title>
 </head>
 
 <body>
@@ -13,10 +13,12 @@
 
     <table>
         <tr>
+        	<th>ID</th>
             <th>NAME</th>
             <th>LASTNAME</th>
         </tr>
         <tr th:each="jedi : ${allJedi}">
+        	<td th:text="${jedi.id}"> <td>
             <td th:text="${jedi.name}"> </td>
             <td th:text="${jedi.lastName}"> </td>
         </tr>

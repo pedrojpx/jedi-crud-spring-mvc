@@ -2,6 +2,7 @@ package com.gftbootcamp.springwebmvc.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -25,5 +26,14 @@ public class JediRepository {
 
 	public void add(Jedi jedi) {
 		jedis.add(jedi);
+	}
+
+	public Optional<Jedi> findById(Long id) {
+		for(Jedi j : jedis) {
+			if(j.getId().equals(id)) {
+				return Optional.of(j);
+			}
+		}
+		return Optional.empty();
 	}
 }

@@ -5,6 +5,10 @@ import javax.validation.constraints.Size;
 
 public class Jedi {
 	
+	
+	static Long idCounter = 0L;
+	private Long id;
+	
 	@NotBlank //funcionam junto com o @Valid no controller para validar o campo
     @Size(min = 3, max = 20, message = "Name must have between 3 and 20 letters")
 	private String name;
@@ -16,6 +20,7 @@ public class Jedi {
 	public Jedi(String name, String lastName) {
 		this.name = name;
 		this.lastName = lastName;
+		this.id = ++idCounter;
 	}
 
 	public Jedi() {
@@ -37,4 +42,13 @@ public class Jedi {
 		this.lastName = lastName;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	
 }

@@ -26,6 +26,12 @@ public class Jedi {
 	public Jedi() {
 	}
 
+	public Jedi(Jedi jedi) {
+		this.name = jedi.name;
+		this.lastName = jedi.lastName;
+		this.id = ++idCounter;
+	}
+
 	public String getName() {
 		return name;
 	}

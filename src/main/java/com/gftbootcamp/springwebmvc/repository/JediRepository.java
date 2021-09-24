@@ -36,4 +36,29 @@ public class JediRepository {
 		}
 		return Optional.empty();
 	}
+
+	public Jedi save(Jedi jedi) {
+		Jedi j;
+		
+		if(jedi.getId() == null) {
+			j = new Jedi(jedi);
+		} else {
+			Optional<Jedi> foundJedi = findById(jedi.getId());
+			if(foundJedi.isPresent()) {
+				foundJedi.get().setName(jedi.getName());
+				foundJedi.get().setLastName(jedi.getLastName());
+				return foundJedi.get();
+			} else {
+				j = new Jedi(jedi);
+			}
+			
+		}
+		jedis.add(j);
+		return j;
+	}
+
+	public void delete(Jedi jedi) {
+		jedis.remove(jedi);
+		
+	}
 }
